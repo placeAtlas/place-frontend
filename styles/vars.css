@@ -1,0 +1,17 @@
+/*Light mode vars*/
+:root {
+    --background: #dddddd;
+    --card: #ffffff;
+    --card-secondary: #ffffff;
+    --card-tertiary: #ffffff;
+    --primary: #000000;
+    --border-radius: 10px;
+  /* } */
+  /*Dark mode vars*/
+  /* [data-theme="dark"] { */
+    --background: #222222;
+    --card: #333333;
+    --card-secondary: #444444; /*You can think of this as being closer to a figurative light*/
+    --card-tertiary: #555555;
+    --primary: #ffffff;
+  }

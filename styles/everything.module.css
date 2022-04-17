@@ -1,0 +1,136 @@
+.main {
+  /* All HTML other than the navbar and footer are in here */
+  padding: 10px;
+}
+
+/* Card */
+.card {
+  border-radius: var(--border-radius);
+  margin: 10px;
+  box-shadow: 0 3px 5px 1px rgb(0 0 0 / 1);
+  display: inline-block;
+}
+.card.primary {
+  background: var(--card);
+}
+.card.secondary {
+  background: var(--card-secondary);
+  box-shadow: 0px 3px 10px 1px rgb(0 0 0 / 1);
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+.error.active {
+  display: block;
+}
+
+/* Navbar */
+.header a {
+  text-decoration: none;
+}
+
+.header {
+  padding: 0 20px;
+  background-color: var(--card-secondary);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px 1px rgb(0 0 0 / 0.4);
+}
+
+#brand {
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+#brand a {
+  color: #ff4500;
+}
+
+.hul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 0px;
+}
+
+.hul a {
+  color: var(--primary);
+}
+
+.hul li {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.hul li:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+#hamburger-icon {
+  margin: auto 0;
+  display: none;
+  cursor: pointer;
+}
+
+#hamburger-icon div {
+  width: 35px;
+  height: 3px;
+  background-color: var(--primary);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.open .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2 {
+  opacity: 0;
+}
+
+.open .bar3 {
+  -webkit-transform: rotate(45deg) translate(-6px, -8px);
+  transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.open .mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  height: calc(100vh - 50px);
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.mobile-menu li {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header nav {
+    display: none;
+  }
+
+  #hamburger-icon {
+    display: block;
+  }
+}

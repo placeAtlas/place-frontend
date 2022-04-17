@@ -1,0 +1,43 @@
+@import "vars.css";
+
+html,
+body {
+  background: var(--background);
+  color: var(--primary);
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: lightblue;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  width: 100px;
+  color: var(--primary);
+  background: var(--card);
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+button:hover {
+  background: var(--card-secondary);
+}
+
+input {
+  display: block;
+  color: var(--primary);
+  background: var(--card);
+  padding: 10px 15px;
+  border: none;
+  width: 300px;
+}
+
