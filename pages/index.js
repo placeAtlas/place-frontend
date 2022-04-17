@@ -29,7 +29,7 @@ export default function Home() {
         </Card>
         <Card
           style={{ maxWidth: "200px" }}
-          onClick={() => (location.href = "remaining")}
+          onClick={() => (location.href = "search")}
         >
           <p style={{ padding: "20px" }}>
             Pixel Search <br /> Find all pixels placed in an area between two
