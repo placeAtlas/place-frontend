@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Home() {
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errText, setErrText] = useState("");
   const [remaining, setRemaining] = useState();
   const [startDate, setStartDate] = useState(new Date("2022-04-01"));
@@ -21,11 +22,13 @@ export default function Home() {
     if (!/^[0-9]+,[0-9]+$/.test(c1)) {
       setIsError(true);
       setErrText("Coordinate 1 does not fit correct format of x,y.");
+      return;
     }
     const c2 = e.target.c2.value.split(" ").join("");
     if (!/^[0-9]+,[0-9]+$/.test(c2)) {
       setIsError(true);
       setErrText("Coordinate 2 does not fit correct format of x,y.");
+      return;
     }
     params.x1 = c1.split(",")[0];
     params.y1 = c1.split(",")[1];
@@ -41,6 +44,7 @@ export default function Home() {
     if (uid && uid !== "") {
       params.uid = uid;
     }
+    setLoading(true);
     const t = await fetch(
       `${process.env.API_URL}/search?${new URLSearchParams(params)}`
     )
@@ -58,6 +62,7 @@ export default function Home() {
         setIsError(true);
         setErrText(error.message);
       });
+    setLoading(false);
     if (t) {
       setRemaining(t);
     }
@@ -127,7 +132,7 @@ export default function Home() {
           {errText}
         </h4>
         {/*TODO: Make a component for search. tbh the Pixels could probably be reutilized but with an option to not load the image (the area won't be the same then and now)*/}
-        <Pixels image={false} uid={true} pixels={remaining} />
+        <Pixels image={false} uid={true} loading={loading} pixels={remaining} />
       </div>
     </div>
   );

@@ -1,7 +1,12 @@
 import Card from "./card";
 import styles from "../styles/everything.module.css";
 
-export default function Pixels({ pixels, image = true, uid = false }) {
+export default function Pixels({
+  pixels,
+  image = true,
+  uid = false,
+  loading = false,
+}) {
   /*
   Example pixels:
   {
@@ -27,7 +32,7 @@ export default function Pixels({ pixels, image = true, uid = false }) {
 
   // The current pixel being displayed
   // const [current, setCurrent] = useState(0);
-  if (pixels && pixels.count !== 0) {
+  if (pixels && pixels.count !== 0 && !loading) {
     // 220px because that is 200px + 10px*2 padding
     return (
       <div
@@ -46,11 +51,20 @@ export default function Pixels({ pixels, image = true, uid = false }) {
                 style={{
                   height: "300px",
                   width: "300px",
-                  backgroundImage:
-                    'url("https://i.redd.it/jsj75rmzelr81.png")',
+                  backgroundImage: 'url("final_place_3x.png")',
                   backgroundPosition: `${
-                    px.x * -3 + 100 <= 0 ? px.x * -3 + 100 : 0
-                  }px ${px.y * -3 + 100 <= 0 ? px.y * -3 + 100 : 0}px`,
+                    px.x * -3 + 100 <= 0
+                      ? px.x * -3 - 100 >= -3 * 2000
+                        ? px.x * -3 + 100
+                        : -3 * 2000
+                      : 0
+                  }px ${
+                    px.y * -3 + 100 <= 0
+                      ? px.y * -3 - 100 >= -3 * 2000
+                        ? px.y * -3 + 100
+                        : -3 * 2000
+                      : 0
+                  }px`,
                   borderRadius: "5% 5% 0% 0%",
                 }}
               />
@@ -90,6 +104,17 @@ export default function Pixels({ pixels, image = true, uid = false }) {
             </div>
           </Card>
         ))}
+      </div>
+    );
+  } else if (loading) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <div className={styles["lds-ring"]}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     );
   } else if (pixels && pixels.count === 0) {

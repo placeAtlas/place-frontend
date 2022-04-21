@@ -7,12 +7,14 @@ import Pixels from "../components/pixels";
 
 export default function Home() {
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errText, setErrText] = useState("");
   const [remaining, setRemaining] = useState();
   const remainingOnSubmit = async (e) => {
     e.preventDefault();
     const uid = e.target.uid.value;
     setIsError(false);
+    setLoading(true);
     const t = await fetch(
       `${process.env.API_URL}/pixels/remaining?uid=${encodeURIComponent(uid)}`
     )
@@ -30,6 +32,7 @@ export default function Home() {
         setIsError(true);
         setErrText(error.message);
       });
+    setLoading(false);
     if (t) {
       setRemaining(t);
     }
@@ -64,7 +67,7 @@ export default function Home() {
         <h4 className={`${styles.error} ${isError ? styles.active : ""}`}>
           {errText}
         </h4>
-        <Pixels pixels={remaining} />
+        <Pixels pixels={remaining} loading={loading} />
       </div>
     </div>
   );
