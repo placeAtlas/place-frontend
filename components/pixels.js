@@ -47,7 +47,7 @@ export default function Pixels({ pixels, image = true, uid = false }) {
                   height: "300px",
                   width: "300px",
                   backgroundImage:
-                    'url("https://placedata.reddit.com/data/final_place_3x.png")',
+                    'url("https://i.redd.it/jsj75rmzelr81.png")',
                   backgroundPosition: `${
                     px.x * -3 + 100 <= 0 ? px.x * -3 + 100 : 0
                   }px ${px.y * -3 + 100 <= 0 ? px.y * -3 + 100 : 0}px`,
